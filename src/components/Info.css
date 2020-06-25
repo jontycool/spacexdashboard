@@ -1,0 +1,16 @@
+.info-container {
+  padding: 10px 50px;
+  background: url(../img/bg-rocket.jpg) bottom left no-repeat;
+}
+
+.overlay-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #f4f4f4;
+  padding: 10px 20px;
+}
+
+.image-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
