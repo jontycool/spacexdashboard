@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { Provider } from 'mobx-react';
+// import 'mobx-react-lite/batchingOptOut';
+import 'mobx-react-lite/batchingForReactDom';
 import StateStore from './store/StateStore';
 import * as serviceWorker from './serviceWorker';
 

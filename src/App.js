@@ -9,6 +9,7 @@ import {
 import LoginCheck from './components/LoginCheck';
 import Login from './components/Login';
 import Home from './components/Home';
+import { observer, inject } from 'mobx-react';
 
 class App extends Component {
   render() {
@@ -17,7 +18,12 @@ class App extends Component {
         <div>
           <Switch>
             <Route path='/' exact component={withRouter(LoginCheck)} />
-            <Route path='/home' component={withRouter(Home)} />
+            <Route path='/home'>
+              <Home
+                userType={this.props.StateStore.userType}
+                changeUser={this.props.StateStore.changeUser}
+              />
+            </Route>
             <Route path='/login' exact component={withRouter(Login)} />
           </Switch>
         </div>
@@ -26,4 +32,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default inject('StateStore')(observer(App));

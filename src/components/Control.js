@@ -30,22 +30,22 @@ export const Control = [
   },
   {
     link: 'launches',
-    showToUser: true,
+    showToUser: false,
     component: Launches,
   },
   {
     link: 'missions',
-    showToUser: true,
+    showToUser: false,
     component: Missions,
   },
   {
     link: 'capsules',
-    showToUser: true,
+    showToUser: false,
     component: Capsules,
   },
   {
     link: 'cores',
-    showToUser: true,
+    showToUser: false,
     component: Cores,
   },
   {
@@ -55,12 +55,12 @@ export const Control = [
   },
   {
     link: 'landpads',
-    showToUser: true,
+    showToUser: false,
     component: LandPads,
   },
   {
     link: 'launchpads',
-    showToUser: true,
+    showToUser: false,
     component: LaunchPads,
   },
   {

@@ -26,6 +26,13 @@ class Login extends Component {
     }
   };
 
+  componentDidMount() {
+    alert('Welcome To SpaceX Dashboard!');
+    alert(
+      'Use "admin" as username for Admin Access and use "user" as username for Restricted Access. You can enter anything as Password for the time being.'
+    );
+  }
+
   render() {
     return (
       <div className='loginBody'>

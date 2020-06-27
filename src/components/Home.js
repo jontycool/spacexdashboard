@@ -9,9 +9,8 @@ import {
   useHistory,
 } from 'react-router-dom';
 import { Control } from './Control';
-import { observer, inject } from 'mobx-react';
 
-function Home() {
+function Home({ userType, changeUser }) {
   let { path, url } = useRouteMatch();
   let history = useHistory();
   const [control, setControl] = useState([]);
@@ -23,6 +22,7 @@ function Home() {
   let clickHandle = (event) => {
     localStorage.removeItem('isLoggedIn');
     history.pushState('/');
+    changeUser('');
   };
 
   return (
@@ -32,7 +32,7 @@ function Home() {
           <ul>
             {control.map((link, i) => {
               var txt = link.link.toUpperCase();
-              if (link.showToUser) {
+              if (userType === 'admin' || link.showToUser) {
                 return (
                   <li key={i}>
                     <Link to={`${url}/${link.link}`}>{txt}</Link>
@@ -52,7 +52,15 @@ function Home() {
           <div className='subpage-container'>
             <Switch>
               <Route exact path={path}>
-                <h1>Welcome!</h1>
+                <div className='info-container'>
+                  <div className='overlay-container'>
+                    <h1>Welcome to SpaceX Dashboard</h1>
+                    <h2 className='text-center'>
+                      This is a Project created with ReactJS and SpaceX Public
+                      API.
+                    </h2>
+                  </div>
+                </div>
               </Route>
               <Route path={`${path}/info`} component={Control[0].component} />
               {control.map((link) => {
@@ -72,4 +80,4 @@ function Home() {
   );
 }
 
-export default inject('StateStore')(observer(Home));
+export default Home;

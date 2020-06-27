@@ -28,3 +28,8 @@ li a:hover {
   background-color: #000;
   border-bottom: 5px solid #c70039;
 }
+
+.text-center {
+  text-align: center;
+  height: 200px;
+}
