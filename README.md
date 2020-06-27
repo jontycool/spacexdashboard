@@ -1,4 +1,4 @@
-# spacexdashboard
+# SpaceX Dashboard
 SpaceX Dashboard built using ReactJS+MobX and SpaceX Public API.
 
 
