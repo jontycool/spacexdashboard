@@ -3,6 +3,8 @@ import './LandPads.css';
 import { apiCall } from './ApiCall';
 import { observer, inject } from 'mobx-react';
 import { SpinnerCircular } from 'spinners-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 class LandPads extends Component {
   state = {
@@ -13,6 +15,8 @@ class LandPads extends Component {
   async componentDidMount() {
     var res = await apiCall('landpads');
     this.setState({ landpads: res.data });
+    AOS.init();
+    AOS.refresh();
     this.setState({ loading: true });
   }
 
@@ -26,7 +30,13 @@ class LandPads extends Component {
                 <h1>All SpaceX Landing Pads</h1>
                 {this.state.landpads.map((pad) => {
                   return (
-                    <div className='eachPad' key={pad.id}>
+                    <div
+                      className='eachPad'
+                      key={pad.id}
+                      data-aos='zoom-in'
+                      data-aos-delay='50'
+                      data-aos-duration='1500'
+                    >
                       <h2>
                         Name: <span>{pad.full_name}</span>
                       </h2>

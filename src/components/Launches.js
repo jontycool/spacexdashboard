@@ -4,6 +4,8 @@ import { apiCall } from './ApiCall';
 import YouTube from 'react-youtube';
 import { observer, inject } from 'mobx-react';
 import { SpinnerCircular } from 'spinners-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 class Launches extends Component {
   state = {
@@ -14,6 +16,8 @@ class Launches extends Component {
   async componentDidMount() {
     var res = await apiCall('launches');
     this.setState({ launches: res.data });
+    AOS.init();
+    AOS.refresh();
     this.setState({ loading: true });
   }
 
@@ -46,7 +50,13 @@ class Launches extends Component {
                 <h1>All SpaceX Launches</h1>
                 {this.state.launches.map((launch, i) => {
                   return (
-                    <div className='eachLaunch' key={i}>
+                    <div
+                      className='eachLaunch'
+                      key={i}
+                      data-aos='zoom-in'
+                      data-aos-delay='50'
+                      data-aos-duration='1500'
+                    >
                       <div className='img-container'>
                         <img
                           src={launch.links.mission_patch}
@@ -105,11 +115,22 @@ class Launches extends Component {
                         <h3>Launch Status: Failure</h3>
                       )}
                       <div className='video-container'>
-                        <YouTube
-                          videoId={launch.links.youtube_id}
-                          opts={opts}
-                          onReady={this.VideoOnReady}
-                        />
+                        <div className='video-area'>
+                          <YouTube
+                            videoId={launch.links.youtube_id}
+                            opts={opts}
+                            onReady={this.VideoOnReady}
+                          />
+                        </div>
+                        <div className='button-area'>
+                          <a
+                            href={launch.links.video_link}
+                            target='_blank'
+                            rel='noopener noreferrer'
+                          >
+                            <button>Video Link</button>
+                          </a>
+                        </div>
                       </div>
                       <p> </p>
                       <div className='buttons'>

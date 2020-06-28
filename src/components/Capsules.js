@@ -3,6 +3,8 @@ import './Capsules.css';
 import { apiCall } from './ApiCall';
 import { observer, inject } from 'mobx-react';
 import { SpinnerCircular } from 'spinners-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 class Capsules extends Component {
   state = {
@@ -13,6 +15,8 @@ class Capsules extends Component {
   async componentDidMount() {
     var res = await apiCall('capsules');
     this.setState({ capsules: res.data });
+    AOS.init();
+    AOS.refresh();
     this.setState({ loading: true });
   }
 
@@ -33,7 +37,13 @@ class Capsules extends Component {
                 <h1>SpaceX Capsules</h1>
                 {this.state.capsules.map((capsule) => {
                   return (
-                    <div className='eachCapsule' key={capsule.capsule_serial}>
+                    <div
+                      className='eachCapsule'
+                      key={capsule.capsule_serial}
+                      data-aos='zoom-in'
+                      data-aos-delay='50'
+                      data-aos-duration='1500'
+                    >
                       <h2>
                         Name: <span>{capsule.capsule_serial}</span>
                       </h2>

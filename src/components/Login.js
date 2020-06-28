@@ -10,7 +10,6 @@ class Login extends Component {
   };
 
   handleClick = () => {
-    console.log(this.state);
     if (this.state.email === 'admin') {
       console.log('Admin!');
       this.props.StateStore.changeUser('admin');
@@ -63,6 +62,7 @@ class Login extends Component {
                 onChange={(event) => {
                   this.setState({ password: event.target.value });
                 }}
+                required
               />
               <p> </p>
               <div className='buttonClass'>

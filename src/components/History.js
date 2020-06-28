@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { apiCall } from './ApiCall';
 import './History.css';
 import { SpinnerCircular } from 'spinners-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 class History extends Component {
   state = {
@@ -12,6 +14,8 @@ class History extends Component {
   async componentDidMount() {
     var res = await apiCall('history');
     this.setState({ histories: res.data });
+    AOS.init();
+    AOS.refresh();
     this.setState({ loading: true });
   }
 
@@ -30,7 +34,13 @@ class History extends Component {
             <h1>Historical Events at SpaceX</h1>
             {this.state.histories.map((history) => {
               return (
-                <div className='eachHistory' key={history.id}>
+                <div
+                  className='eachHistory'
+                  key={history.id}
+                  data-aos='zoom-in'
+                  data-aos-delay='50'
+                  data-aos-duration='1500'
+                >
                   <h2>{history.title}</h2>
                   <p>{history.details}</p>
                   <h3>

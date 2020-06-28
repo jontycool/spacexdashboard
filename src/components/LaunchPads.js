@@ -3,6 +3,8 @@ import './LaunchPads.css';
 import { apiCall } from './ApiCall';
 import { observer, inject } from 'mobx-react';
 import { SpinnerCircular } from 'spinners-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 class LaunchPads extends Component {
   state = {
@@ -13,6 +15,8 @@ class LaunchPads extends Component {
   async componentDidMount() {
     var res = await apiCall('launchpads');
     this.setState({ launchpads: res.data });
+    AOS.init();
+    AOS.refresh();
     this.setState({ loading: true });
   }
 
@@ -26,7 +30,13 @@ class LaunchPads extends Component {
                 <h1>All SpaceX Launch Pads</h1>
                 {this.state.launchpads.map((pad) => {
                   return (
-                    <div className='eachPad' key={pad.id}>
+                    <div
+                      className='eachPad'
+                      key={pad.id}
+                      data-aos='zoom-in'
+                      data-aos-delay='50'
+                      data-aos-duration='1500'
+                    >
                       <h2>
                         Site Name: <span>{pad.site_name_long}</span>
                       </h2>

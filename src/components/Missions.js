@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { apiCall } from './ApiCall';
-import './Missions.css';
 import { observer, inject } from 'mobx-react';
 import { SpinnerCircular } from 'spinners-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import './Missions.css';
 
 class Missions extends Component {
   state = {
@@ -13,6 +15,8 @@ class Missions extends Component {
   async componentDidMount() {
     var res = await apiCall('missions');
     this.setState({ missions: res.data });
+    AOS.init();
+    AOS.refresh();
     this.setState({ loading: true });
   }
 
@@ -26,7 +30,13 @@ class Missions extends Component {
                 <h1>Missions</h1>
                 {this.state.missions.map((mission) => {
                   return (
-                    <div className='eachMission' key={mission.mission_id}>
+                    <div
+                      className='eachMission'
+                      key={mission.mission_id}
+                      data-aos='zoom-in'
+                      data-aos-delay='50'
+                      data-aos-duration='1500'
+                    >
                       <h2>
                         Mission Name: <span>{mission.mission_name}</span>
                       </h2>
@@ -61,7 +71,7 @@ class Missions extends Component {
                             target='_blank'
                             rel='noopener noreferrer'
                           >
-                            <i class='fab fa-twitter fa-4x'></i>
+                            <button>Twitter</button>
                           </a>
                         ) : (
                           ''

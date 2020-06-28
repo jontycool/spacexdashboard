@@ -19,6 +19,9 @@
   display: flex;
   justify-content: center;
 }
+.video-container .button-area {
+  display: none;
+}
 
 .eachLaunch {
   margin: 20px 20px;

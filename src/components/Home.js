@@ -55,7 +55,7 @@ function Home({ userType, changeUser }) {
                 <div className='info-container'>
                   <div className='overlay-container'>
                     <h1>Welcome to SpaceX Dashboard</h1>
-                    <h2 className='text-center'>
+                    <h2 className='welcome-msg'>
                       This is a Project created with ReactJS and SpaceX Public
                       API.
                     </h2>

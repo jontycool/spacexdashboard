@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { apiCall } from './ApiCall';
 import './Dragons.css';
 import { SpinnerCircular } from 'spinners-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 class Dragons extends Component {
   state = {
@@ -12,6 +14,8 @@ class Dragons extends Component {
   async componentDidMount() {
     var res = await apiCall('dragons');
     this.setState({ dragons: res.data });
+    AOS.init();
+    AOS.refresh();
     this.setState({ loading: true });
   }
 
@@ -23,7 +27,13 @@ class Dragons extends Component {
             <h1>All SpaceX Dragons</h1>
             {this.state.dragons.map((dragon) => {
               return (
-                <div className='eachDragon' key={dragon.id}>
+                <div
+                  className='eachDragon'
+                  key={dragon.id}
+                  data-aos='zoom-in'
+                  data-aos-delay='50'
+                  data-aos-duration='1500'
+                >
                   <h2>
                     Name: <span>{dragon.name}</span>
                   </h2>

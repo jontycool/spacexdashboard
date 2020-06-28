@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './Payloads.css';
 import { apiCall } from './ApiCall';
 import { SpinnerCircular } from 'spinners-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 class Payloads extends Component {
   state = {
@@ -12,6 +14,8 @@ class Payloads extends Component {
   async componentDidMount() {
     var res = await apiCall('payloads');
     this.setState({ payloads: res.data });
+    AOS.init();
+    AOS.refresh();
     this.setState({ loading: true });
   }
 
@@ -23,7 +27,13 @@ class Payloads extends Component {
             <h1>SpaceX Payload Details</h1>
             {this.state.payloads.map((payload) => {
               return (
-                <div className='eachPayload' key={payload.payload_id}>
+                <div
+                  className='eachPayload'
+                  key={payload.payload_id}
+                  data-aos='zoom-in'
+                  data-aos-delay='50'
+                  data-aos-duration='1500'
+                >
                   <h2>
                     Name: <span>{payload.payload_id}</span>
                   </h2>
