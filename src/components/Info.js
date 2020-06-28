@@ -24,7 +24,7 @@ class Info extends Component {
         {this.state.loading ? (
           <div className='overlay-container'>
             <div className='image-container'>
-              <img src={logo} alt='logo' width='400' height='150' />
+              <img src={logo} alt='logo' width='355' height='200' />
             </div>
             <h3>
               Founder: <span>{this.state.info.founder}</span>

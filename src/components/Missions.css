@@ -104,4 +104,14 @@
   .spinner-container {
     width: calc(100vw - 10px) !important;
   }
+
+  .image-container .roadster-image {
+    display: none !important;
+  }
+  .mobile-image {
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
 }

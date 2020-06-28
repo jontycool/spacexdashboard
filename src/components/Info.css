@@ -17,6 +17,9 @@
 .image-container img {
   margin: 5px;
 }
+.image-container .mobile-image {
+  display: none;
+}
 
 span {
   font-weight: 450;

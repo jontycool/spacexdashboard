@@ -28,11 +28,26 @@ class Roadster extends Component {
                     target='_blank'
                     rel='noopener noreferrer'
                     key={i}
+                    className='roadster-image'
                   >
                     <img src={image} alt='roadster' width='200' height='200' />
                   </a>
                 );
               })}
+              <div className='mobile-image'>
+                <a
+                  href='https://farm5.staticflickr.com/4615/40143096241_11128929df_b.jpg'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <img
+                    src='https://farm5.staticflickr.com/4615/40143096241_11128929df_b.jpg'
+                    alt='roadster'
+                    width='200'
+                    height='200'
+                  />
+                </a>
+              </div>
             </div>
             <h2>
               Name: <span>{this.state.info.name}</span>
